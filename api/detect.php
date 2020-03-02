@@ -20,14 +20,18 @@ $content = trim(file_get_contents("php://input"));
 $data_json = json_decode($content, true);
 $nurse_data = $data_json['nurse'];
 $nurse_count =  count($nurse_data);
-if($room_count>0)
+if($nurse_count>0)
 {
-    for($numA=0;$numA<$room_count;$numA++)
+    for($numA=0;$numA<$nurse_count;$numA++)
     {
-        $room_data[$numA] = array(   'nurse_uid'=> $room_arr['nurse_uid'][$numA]['room_id'],
-                                    'nurse_firstname' => $room_arr['nurse_firstname'][$numA]['room_title'],
-                                    'nurse_lastname' => $room_arr['nurse_lastname'][$numA]['room_distance']
-                                );        
+        $nurse_profile[$numA] = array(  'nurse_uid'=> $nurse_data['nurse'][$numA]['nurse_uid'],
+                                        'nurse_firstname' => $nurse_data['nurse'][$numA]['nurse_firstname'],
+                                        'nurse_lastname' => $nurse_data['nurse'][$numA]['nurse_lastname']
+
+                                    );
+                                    
+        $room_data[$numA] = $nurse_data['nurse'][$numA]['detect_room'];
+                                 
     }
 
     // for($numB=0;$numB<$room_count;$numB++)
@@ -37,16 +41,16 @@ if($room_count>0)
     //                                 'room_distance' => $room_arr['detect_room'][$numB]['room_distance']
     //                             );        
     // }
-    
+
 }
 
 //Nurse Data
-$nurse_uid = $nurse_data['nurse']['nurse_uid'];
-$nurse_firstname = $nurse_data['nurse']['nurse_firstname'];
-$nurse_lastname = $nurse_data['nurse']['nurse_lastname'];
-//Room Data
-$detect_room = $data_json['nurse']['detect_room'];
+// $nurse_uid = $nurse_data['nurse']['nurse_uid'];
+// $nurse_firstname = $nurse_data['nurse']['nurse_firstname'];
+// $nurse_lastname = $nurse_data['nurse']['nurse_lastname'];
 
+        //Room Data
+// $detect_room = $data_json['nurse']['detect_room'];  
 
 
  
