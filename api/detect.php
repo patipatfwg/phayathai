@@ -5,7 +5,7 @@
 header('Content-Type: application/json');
 
 //Make sure that it is a POST request.
-if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
+if(strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') != 0){
     throw new Exception('Request method must be POST!');
 }
  
