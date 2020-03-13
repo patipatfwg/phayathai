@@ -1,6 +1,8 @@
 <?php 
 
-session_start();
+// session_start();
+
+header('Content-Type: application/json');
 
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
@@ -18,69 +20,26 @@ $content = trim(file_get_contents("php://input"));
  
 //Attempt to decode the incoming RAW post data from JSON.
 $data_json = json_decode($content, true);
-$nurse_data = $data_json['nurse'];
-$nurse_count =  count($nurse_data);
-if($nurse_count>0)
+
+if(isset($data_json['nurse'])&& isset($data_json['information']))
 {
-    for($numA=0;$numA<$nurse_count;$numA++)
-    {
-        $nurse_profile[$numA] = array(  'nurse_uid'=> $nurse_data['nurse'][$numA]['nurse_uid'],
-                                        'nurse_firstname' => $nurse_data['nurse'][$numA]['nurse_firstname'],
-                                        'nurse_lastname' => $nurse_data['nurse'][$numA]['nurse_lastname']
+    $nurse_data = $data_json['nurse'];
+    $information_data = $data_json['information'];
 
-                                    );
-                                    
-        $room_data[$numA] = $nurse_data['nurse'][$numA]['detect_room'];
-                                 
-    }
+    $data = [
+        "head"=>array("code"=>200,"message"=>"Thank You Pong"),
+        "body"=>array("count information"=>count($information_data),"count nurse"=>count($nurse_data))
+    ];
 
-    // for($numB=0;$numB<$room_count;$numB++)
-    // {
-    //     $room_data[$numB] = array(   'room_id'=> $room_arr['detect_room'][$numB]['room_id'],
-    //                                 'room_title' => $room_arr['detect_room'][$numB]['room_title'],
-    //                                 'room_distance' => $room_arr['detect_room'][$numB]['room_distance']
-    //                             );        
-    // }
+    file_put_contents('json/datajson.json', json_encode($data_json,true) );
+}
+else
+{
+    $data = [
+        "head"=>array("code"=>400,"message"=>"Kick Pong"),
+        "body"=>[]
+    ];
 
 }
 
-//Nurse Data
-// $nurse_uid = $nurse_data['nurse']['nurse_uid'];
-// $nurse_firstname = $nurse_data['nurse']['nurse_firstname'];
-// $nurse_lastname = $nurse_data['nurse']['nurse_lastname'];
-
-        //Room Data
-// $detect_room = $data_json['nurse']['detect_room'];  
-
-
- 
-// $nurse_data = array('nurse_uid'=>'','nurse_firstname'=>'','nurse_lastname'=>'');
-// 
-// 
-// $room_count =  count($room_arr);
-// if($room_count>0)
-// {
-//     for($num=0;$num<$room_count;$num++)
-//     {
-//         $room_data[$num] = array(   'room_id'=> $room_arr['detect_room'][$num]['room_id'],
-//                                     'room_title' => $room_arr['detect_room'][$num]['room_title'],
-//                                     'room_distance' => $room_arr['detect_room'][$num]['room_distance']
-//                                 );
-//     }
-// }
-// else
-// {
-//     $room_data = [];
-// }
-// $data = array("detect_room"=>$room_data);
-// // $_SESSION['session_detect'] = $data;
-// date_default_timezone_set("Asia/Bangkok");
-// header('Content-Type: application/json');
-
-// // echo json_encode($data);
-
-// // echo json_encode($_SESSION['session_room']);
-
-// $head = array('code'=>200,'title'=>'Add Data at '.date("Y-m-d H:i"));
-// $data_response = array('head'=>$head,'body'=>$data);
-// echo json_encode($data_response);
+echo json_encode($data,JSON_PRETTY_PRINT);
