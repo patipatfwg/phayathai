@@ -5,7 +5,7 @@
 header('Content-Type: application/json');
 
 //Make sure that it is a POST request.
-// if(strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') != 0){
+// if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 //     throw new Exception('Request method must be POST!');
 // }
  
@@ -21,25 +21,36 @@ $content = trim(file_get_contents("php://input"));
 //Attempt to decode the incoming RAW post data from JSON.
 $data_json = json_decode($content, true);
 
-if(isset($data_json['nurse'])&& isset($data_json['information']))
+if($_SERVER['REQUEST_METHOD']=='POST')
 {
-    $nurse_data = $data_json['nurse'];
-    $information_data = $data_json['information'];
+    if(isset($data_json['nurse'])&& isset($data_json['information']))
+    {
+        $nurse_data = $data_json['nurse'];
+        $information_data = $data_json['information'];
 
-    $data = [
-        "head"=>array("code"=>200,"message"=>"Thank You Pong"),
-        "body"=>array("count information"=>count($information_data),"count nurse"=>count($nurse_data))
-    ];
+        $data = [
+            "head"=>array("code"=>200,"message"=>"Thank You Pong"),
+            "body"=>array("count information"=>count($information_data),"count nurse"=>count($nurse_data))
+        ];
 
-    file_put_contents('json/datajson.json', json_encode($data_json,true) );
+        $filename = "json/data_detect_".$information_data['deviceId'].".json";
+        file_put_contents($filename, json_encode($data_json,true) );
+    }
+    else
+    {
+        $data = [
+            "head"=>array("code"=>400,"message"=>"Kick Pong"),
+            "body"=>[]
+        ];
+
+    }
+    echo json_encode($data,JSON_PRETTY_PRINT);
 }
-else
+else if($_SERVER['REQUEST_METHOD']=='GET')
 {
     $data = [
         "head"=>array("code"=>400,"message"=>"Kick Pong"),
-        "body"=>[]
+        "body"=>['No No']
     ];
-
+    echo json_encode($data,JSON_PRETTY_PRINT);
 }
-
-echo json_encode($data,JSON_PRETTY_PRINT);

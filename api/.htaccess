@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+#RewriteRule ^(.*)$ index.php [NC,L]
+#RewriteRule ^(.*)$ index.php?file=$1 [L,QSA]
