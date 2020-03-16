@@ -21,7 +21,7 @@ $content = trim(file_get_contents("php://input"));
 //Attempt to decode the incoming RAW post data from JSON.
 $data_json = json_decode($content, true);
 
-if($_SERVER['REQUEST_METHOD']=='GET')
+if($_SERVER['REQUEST_METHOD']=='POST')
 {
     if(isset($data_json['nurse'])&& isset($data_json['information']))
     {
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']=='GET')
     }
     echo json_encode($data,JSON_PRETTY_PRINT);
 }
-else if($_SERVER['REQUEST_METHOD']=='POST')
+else if($_SERVER['REQUEST_METHOD']=='GET')
 {
     $data = [
         "head"=>array("code"=>400,"message"=>"Kick Pong"),
