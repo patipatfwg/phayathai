@@ -1,6 +1,6 @@
 <?php 
 
-// session_start();
+session_start();
 
 header('Content-Type: application/json');
 
@@ -21,20 +21,24 @@ $content = trim(file_get_contents("php://input"));
 //Attempt to decode the incoming RAW post data from JSON.
 $data_json = json_decode($content, true);
 
-if($_SERVER['REQUEST_METHOD']=='POST')
+if($_SERVER['REQUEST_METHOD']=='GET')
 {
     if(isset($data_json['nurse'])&& isset($data_json['information']))
     {
         $nurse_data = $data_json['nurse'];
         $information_data = $data_json['information'];
 
+        $filename = "json/data_detect_".$information_data['deviceId'].".json";
+        file_put_contents($filename, json_encode($data_json,true) );
+        //
+        //
+
+        //
+        //
         $data = [
             "head"=>array("code"=>200,"message"=>"Thank You Pong"),
             "body"=>array("count information"=>count($information_data),"count nurse"=>count($nurse_data))
-        ];
-
-        $filename = "json/data_detect_".$information_data['deviceId'].".json";
-        file_put_contents($filename, json_encode($data_json,true) );
+        ];        
     }
     else
     {
@@ -46,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     }
     echo json_encode($data,JSON_PRETTY_PRINT);
 }
-else if($_SERVER['REQUEST_METHOD']=='GET')
+else if($_SERVER['REQUEST_METHOD']=='POST')
 {
     $data = [
         "head"=>array("code"=>400,"message"=>"Kick Pong"),
