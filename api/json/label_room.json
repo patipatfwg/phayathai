@@ -3,34 +3,6 @@
         {
             "deviceId":"352024090688981",
             "room_name":"5001"
-        },
-        {
-            "deviceId":"ABCw5r2",
-            "room_name":"5002"
-        },
-        {
-            "deviceId":"ABCw5r3",
-            "room_name":"5003"
-        },
-        {
-            "deviceId":"ABCw5r4",
-            "room_name":"5004"
-        },
-        {
-            "deviceId":"ABCw5r5",
-            "room_name":"5005"
-        },
-        {
-            "deviceId":"ABCw5r6",
-            "room_name":"5006"
-        },
-        {
-            "deviceId":"ABCw5r7",
-            "room_name":"5007"
-        },
-        {
-            "deviceId":"ABCw5r8",
-            "room_name":"5008"
         }
     ]
 }

@@ -1,0 +1,15 @@
+{
+    "information":{
+        "deviceId":"352024090688981"
+    },
+    "nurse": [
+      {
+        "distance": 9.287895236556166,
+        "UUID": "e09f8c6d-f8de-4522-970f-cb4b0ed618df"
+      },
+      {
+        "distance": 7.871763695020549,
+        "UUID": "a16ce630-b42a-404e-a1ab-37c9a8361260"
+      }
+    ]
+}

@@ -30,6 +30,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         $filename = "json/data_detect_".$information_data['deviceId'].".json";
         file_put_contents($filename, json_encode($data_json,true) );
+        chmod($filename,0777);
         //
         //
 
