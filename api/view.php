@@ -4,14 +4,21 @@
 
 session_start();
 
-header('Content-Type: application/json');
+//Register DeviceId
+$_SESSION['deviceId'] = '7e49d38c03225ea4';
+$_SESSION['7e49d38c03225ea4_room_name'] = '1001';
 
-//Make sure that it is a POST request.
-// if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
-//     throw new Exception('Request method must be POST!');
-// }
+//Register UUDI
+$_SESSION['UUID'] = 'a16ce630-b42a-404e-a1ab-37c9a8361260';
+$_SESSION['a16ce630-b42a-404e-a1ab-37c9a8361260_title_name'] = 'นายปฏิพัทธ์ จันทร์รุ่งเรือง';
+$_SESSION['a16ce630-b42a-404e-a1ab-37c9a8361260_title_position'] = 'ผู้ช่วยพยาบาล';
+
+$_SESSION['UUID'] = 'e09f8c6d-f8de-4522-970f-cb4b0ed618df';
+$_SESSION['e09f8c6d-f8de-4522-970f-cb4b0ed618df_title_name'] = 'นายโปงลาง';
+$_SESSION['e09f8c6d-f8de-4522-970f-cb4b0ed618df_title_position'] = 'พยาบาล';
+
+header('Content-Type: application/json');
  
-//Make sure that the content type of the POST request has been set to application/json
 // $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 // if(strcasecmp($contentType, 'application/json') != 0){
 //     throw new Exception('Content type must be: application/json');
@@ -25,11 +32,12 @@ $label_nurse_json = json_decode($label_nurse, true);
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
+    $display_nurse = array("UUID"=>$a);
+
     if(isset($label_room_json['room']))
     {
         $room_data = $label_room_json['room'];
         $nurse_data = $label_nurse_json['nurse'];
-
         if(count($room_data)>0 && count($nurse_data)>0)
         {
            for($numRoom=0;$numRoom<count($room_data);$numRoom++)
@@ -52,49 +60,23 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                         {
                             $UUID = $data_detect_json['nurse'][$numDetect]['UUID'];
                             $distance = $data_detect_json['nurse'][$numDetect]['distance'];
-                            $nurse_list[$numDetect] = array("UUID"=>$UUID,"nurse_firstname"=> "First","nurse_lastname"=> "Last","distance"=>$distance);
+                            
+                            $nurse_firstname = $_SESSION[$UUID.'_title_name'];  
+                            $nurse_position = $_SESSION[$UUID.'_title_position'];  
+                            $nurse_list[$numDetect] = array("UUID"=>$UUID,"nurse_title_name"=> $nurse_firstname,"nurse_title_position"=> $nurse_position,"distance"=>$distance);
                         }
                     }
                 }
 
-
-                // for($numNurse=0;$numNurse<count($nurse_data);$numNurse++)
-                // {
-                        // $deviceId = $room_data[$numRoom]['deviceId'];
-                        // $room_name = $room_data[$numRoom]['room_name'];
-
-                        // $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
-                        // if(file_exists($file_url))
-                        // {
-                            
-                        //     if($data_device_json['information']['deviceId']==$deviceId)
-                        //     {
-                        //         $data_device_json['nurse']['']
-                        //     }
-                        // }
-
-                        // $b[$numNurse] = array("UUID"=>"0051","nurse_firstname"=>"ABC","nurse_lastname"=>"DEF","distance"=>1.9);
-                // }
-
-                // $nurse_name = $b;
-
                 if(!isset($nurse_list)){ $nurse_list = []; }
                 $a[$numRoom] = array("deviceId"=>$deviceId, "room_name"=>$room_name,"nurse_list"=> $nurse_list );
-           }
-
+            }
            $room_name = $a;
-
         }
-
-        //
-        //
-        
-        //
-        //
     
         $data = [
             "head"=>array("code"=>200,"message"=>"View Room"),
-            "body"=>array("display_room"=>$room_name)
+            "body"=>array("display_room"=>$room_name,"display_nurse"=>$display_nurse)
         ];        
     }
     else

@@ -2,13 +2,13 @@
 "nurse": [
     {
       "UUID": "e09f8c6d-f8de-4522-970f-cb4b0ed618df",
-      "nurse_firstname": "Pong",
-      "nurse_lastname": "FWG"
+      "nurse_title_name": "Pong",
+      "nurse_title_position": "FWG"
     },
     {
       "UUID": "a16ce630-b42a-404e-a1ab-37c9a8361260",
-      "nurse_firstname": "Soso",
-      "nurse_lastname": "FWG"
+      "nurse_title_name": "นายปฏิพัทธ์ จันทร์รุ่งเรือง",
+      "nurse_title_position": "ผู้ช่วยพยาบาล"
     }
   ]
 }
