@@ -36,16 +36,16 @@ if($_SERVER['REQUEST_METHOD']=='POST')
            {
                 $deviceId = $room_data[$numRoom]['deviceId'];
                 $room_name = $room_data[$numRoom]['room_name'];
-                $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
+                $file_url = "json/data_detect_".$deviceId.".json";
 
                 $data_detect = trim(file_get_contents($file_url));
                 $data_detect_json = json_decode($data_detect, true);
-                print_r($data_detect_json);
 
                 if(file_exists($file_url))
                 {
                     $data_detect = trim(file_get_contents($file_url));
                     $data_detect_json = json_decode($data_detect, true);
+                    
                     for($numDetect=0;$numDetect<count($data_detect_json);$numDetect++)
                     {
                         if($data_detect_json['information']['deviceId']==$deviceId)
