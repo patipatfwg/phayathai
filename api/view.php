@@ -1,5 +1,7 @@
 <?php 
 
+// 316800 = 5 	mile
+
 session_start();
 
 header('Content-Type: application/json');
@@ -35,6 +37,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 $deviceId = $room_data[$numRoom]['deviceId'];
                 $room_name = $room_data[$numRoom]['room_name'];
                 $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
+
+                $data_detect = trim(file_get_contents($file_url));
+                $data_detect_json = json_decode($data_detect, true);
+                print_r($data_detect_json);
+
                 if(file_exists($file_url))
                 {
                     $data_detect = trim(file_get_contents($file_url));
@@ -45,11 +52,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                         {
                             $UUID = $data_detect_json['nurse'][$numDetect]['UUID'];
                             $distance = $data_detect_json['nurse'][$numDetect]['distance'];
+                            $nurse_list[$numDetect] = array("UUID"=>$UUID,"nurse_firstname"=> "First","nurse_lastname"=> "Last","distance"=>$distance);
                         }
-                        $b[$numDetect] = array("UUID"=>$UUID,"nurse_firstname"=> "First","nurse_lastname"=> "Last","distance"=>$distance);
                     }
-                    $nurse_list = $b;
                 }
+
 
                 // for($numNurse=0;$numNurse<count($nurse_data);$numNurse++)
                 // {
