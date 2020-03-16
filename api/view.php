@@ -34,24 +34,48 @@ if($_SERVER['REQUEST_METHOD']=='POST')
            {
                 $deviceId = $room_data[$numRoom]['deviceId'];
                 $room_name = $room_data[$numRoom]['room_name'];
-
-                for($numNurse=0;$numNurse<count($nurse_data);$numNurse++)
+                $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
+                if(file_exists($file_url))
                 {
-                        $deviceId = $room_data[$numRoom]['deviceId'];
-                        $room_name = $room_data[$numRoom]['room_name'];
-
-                        $b[$numNurse] = array("UUID"=>"0051","nurse_firstname"=>"ABC","nurse_lastname"=>"DEF","distance"=>1.9);
+                    $data_detect = trim(file_get_contents($file_url));
+                    $data_detect_json = json_decode($data_detect, true);
+                    for($numDetect=0;$numDetect<count($data_detect_json);$numDetect++)
+                    {
+                        if($data_detect_json['information']['deviceId']==$deviceId)
+                        {
+                            $UUID = $data_detect_json['nurse'][$numDetect]['UUID'];
+                            $distance = $data_detect_json['nurse'][$numDetect]['distance'];
+                        }
+                        $b[$numDetect] = array("UUID"=>$UUID,"nurse_firstname"=> "First","nurse_lastname"=> "Last","distance"=>$distance);
+                    }
+                    $nurse_list = $b;
                 }
 
-                $nurse_name = $b;
+                // for($numNurse=0;$numNurse<count($nurse_data);$numNurse++)
+                // {
+                        // $deviceId = $room_data[$numRoom]['deviceId'];
+                        // $room_name = $room_data[$numRoom]['room_name'];
 
+                        // $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
+                        // if(file_exists($file_url))
+                        // {
+                            
+                        //     if($data_device_json['information']['deviceId']==$deviceId)
+                        //     {
+                        //         $data_device_json['nurse']['']
+                        //     }
+                        // }
 
-                $a[$numRoom] = array("deviceId"=>$deviceId, "room_name"=>$room_name,"nurse_list"=> $nurse_name );
+                        // $b[$numNurse] = array("UUID"=>"0051","nurse_firstname"=>"ABC","nurse_lastname"=>"DEF","distance"=>1.9);
+                // }
+
+                // $nurse_name = $b;
+
+                if(!isset($nurse_list)){ $nurse_list = []; }
+                $a[$numRoom] = array("deviceId"=>$deviceId, "room_name"=>$room_name,"nurse_list"=> $nurse_list );
            }
 
            $room_name = $a;
-
-
 
         }
 

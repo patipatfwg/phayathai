@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         //
         $data = [
             "head"=>array("code"=>200,"message"=>"Thank You Pong"),
-            "body"=>array("count information"=>count($information_data),"count nurse"=>count($nurse_data))
+            "body"=>array("data_input"=>$data_json)
         ];        
     }
     else
