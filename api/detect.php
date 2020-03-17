@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $write_deviceId = $information_data['deviceId'];
         if($write_deviceId!='')
         {
-            $filename = "json/data_detect_".$information_data['deviceId'].".json";
+            $filename = "jsonlogs/data_detect_".$information_data['deviceId'].".json";
             $file_encode = json_encode($data_json,true);
             file_put_contents($filename, $file_encode );
             chmod($filename,0777);            
