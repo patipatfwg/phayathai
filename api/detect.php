@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             for($num=0;$num<count($nurse_data);$num++)
             {
                 $title = $nurse_data[$num]['title'];
-                if($title=='iTAG')
+                if($title=='iTAG            ')
                 {
                     $mac_address = $nurse_data[$num]['mac_address'];
                     $distance = $nurse_data[$num]['distance'];
