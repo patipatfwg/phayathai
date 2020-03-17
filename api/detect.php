@@ -30,6 +30,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $write_deviceId = $information_data['deviceId'];
         if($write_deviceId!='')
         {
+            $filename = "jsonlogs/".$information_data['deviceId']."_data_detect.json";
+            $file_encode = json_encode($data_json,true);
+            file_put_contents($filename, $file_encode );
+            chmod($filename,0777);      
+
             for($num=0;$num<count($nurse_data);$num++)
             {
                 $title = $nurse_data[$num]['title'];
@@ -37,29 +42,32 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 {
                     $mac_address = $nurse_data[$num]['mac_address'];
                     $distance = $nurse_data[$num]['distance'];
-                    $data_input = [array(  
-                                    'mac_address'=> $mac_address,
-                                    'title'=> $title,
-                                    'distance'=> $distance
-                                    )];
+                    $data_input = [array(  'mac_address'=> $mac_address,'title'=> $title,'distance'=> $distance)];
                 }
             }
 
             if(!isset($data_input)){  $data_input = []; }
-            $filename = "jsonlogs/".$information_data['deviceId']."_data_detect.json";
-            $file_encode = json_encode($data_json,true);
-            file_put_contents($filename, $file_encode );
-            chmod($filename,0777);           
+
+            $data = [
+                "head"=>array("code"=>200,"message"=>"OK"),
+                "body"=>array("list"=> $data_input )
+            ];             
         }
         else
         {
-            $data_input = [];
+            $data = [
+                "head"=>array("code"=>200,"message"=>"Thank You Pong"),
+                "body"=>[]
+            ];   
         }
 
-        $data = [
-            "head"=>array("code"=>200,"message"=>"Thank You Pong"),
-            "body"=>array("data_input"=> $data_input )
-        ];        
+        if($write_deviceId!='' && count($data_input))
+        {
+            $filename = "json/".$information_data['deviceId'].".json";
+            $file_encode = json_encode($data,true);
+            file_put_contents($filename, $file_encode );
+            chmod($filename,0777); 
+        }
     }
     else
     {
