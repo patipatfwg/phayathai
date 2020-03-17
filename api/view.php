@@ -20,6 +20,12 @@ include "detect.php";
 
 header('Content-Type: application/json');
 
+$deviceId_json = trim(file_get_contents("deviceId.json"));
+$deviceId_json = json_decode($deviceId_json, true);
+
+$UUID_json = trim(file_get_contents("UUID.json"));
+$UUID_json = json_decode($UUID_json, true);
+
 if($_SERVER['REQUEST_METHOD']=='GET')
 {
     $data = [

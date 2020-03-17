@@ -20,11 +20,11 @@ header('Content-Type: application/json');
 //     throw new Exception('Content type must be: application/json');
 // }
 
-$label_room = trim(file_get_contents("json/label_room.json"));
-$label_room_json = json_decode($label_room, true);
+$deviceId_json = trim(file_get_contents("deviceId.json"));
+$deviceId_json = json_decode($deviceId_json, true);
 
-$label_nurse = trim(file_get_contents("json/label_nurse.json"));
-$label_nurse_json = json_decode($label_nurse, true);
+$UUID_json = trim(file_get_contents("UUID.json"));
+$UUID_json = json_decode($UUID_json, true);
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
@@ -32,8 +32,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
     if(isset($label_room_json['room']))
     {
-        $room_data = $label_room_json['room'];
-        $nurse_data = $label_nurse_json['nurse'];
+        $deviceId_json = $deviceId_json['room'];
+        $UUID_json = $UUID_json['nurse'];
         if(count($room_data)>0 && count($nurse_data)>0)
         {
            for($numRoom=0;$numRoom<count($room_data);$numRoom++)
