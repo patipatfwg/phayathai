@@ -4,6 +4,7 @@
 
 session_start();
 
+
 $_SESSION['UUID'] = 
 array(
     'a16ce630-b42a-404e-a1ab-37c9a8361260',

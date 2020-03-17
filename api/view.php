@@ -2,6 +2,9 @@
 
 session_start();
 
+include "UUID.php";
+include "detect.php";
+
 //Register DeviceId
 // $_SESSION['deviceId'] = '7e49d38c03225ea4';
 // $_SESSION['7e49d38c03225ea4_room_name'] = '1001';
@@ -17,23 +20,26 @@ session_start();
 
 header('Content-Type: application/json');
 
-if($_SERVER['REQUEST_METHOD']=='POST')
+if($_SERVER['REQUEST_METHOD']=='GET')
 {
     $data = [
         "head"=>array("code"=>400,"message"=>"Kick Pong"),
-        "body"=>['No No']
+        "body"=>[]
     ];
     echo json_encode($data,JSON_PRETTY_PRINT);
 }
-else if($_SERVER['REQUEST_METHOD']=='GET')
+else if($_SERVER['REQUEST_METHOD']=='POST')
 {
-    $data = [
-        "head"=>array("code"=>400,"message"=>"Kick Pong"),
-        "body"=>['No No']
-    ];
-    echo json_encode($data,JSON_PRETTY_PRINT);
-}
 
+
+
+
+    $data = [
+        "head"=>array("code"=>200,"message"=>"View Room"),
+        "body"=>array("display_room"=>$room_name,"display_nurse"=>$display_nurse)
+    ];
+    echo json_encode($data,JSON_PRETTY_PRINT);
+}
 
                 // $file_url = "json/data_detect_".$room_data[$numRoom]['deviceId'].".json";
                 // if(file_exists($file_url))
