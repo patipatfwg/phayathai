@@ -2,8 +2,9 @@
 
 session_start();
 
-include "UUID.php";
-include "detect.php";
+include "view_nurse.php";
+
+$view_nurse = new view_nurse();
 
 //Register DeviceId
 // $_SESSION['deviceId'] = '7e49d38c03225ea4';
@@ -36,13 +37,31 @@ if($_SERVER['REQUEST_METHOD']=='GET')
 }
 else if($_SERVER['REQUEST_METHOD']=='POST')
 {
+    for($numdeviceId=0;$numdeviceId<count($deviceId_json);$numdeviceId++)
+    {
+        $deviceId = $deviceId_json[$numdeviceId]['deviceId'];
+        if($deviceId!='')
+        {
+            
+        }
+        $file_url = "jsonlogs/".$deviceId."_data_detect.json";
+        if(file_exists($file_url))
+        {
 
+        }
+
+
+
+        $display_room = [
+
+        ];
+    }
 
 
 
     $data = [
         "head"=>array("code"=>200,"message"=>"View Room"),
-        "body"=>array("display_room"=>$room_name,"display_nurse"=>$display_nurse)
+        "body"=>array("display_room"=>$display_room,"display_nurse"=>$display_nurse)
     ];
     echo json_encode($data,JSON_PRETTY_PRINT);
 }
