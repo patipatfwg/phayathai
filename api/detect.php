@@ -27,16 +27,15 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     {
         $nurse_data = $data_json['nurse'];
         $information_data = $data_json['information'];
+        $write_deviceId = $information_data['deviceId'];
+        if($write_deviceId!='')
+        {
+            $filename = "json/data_detect_".$information_data['deviceId'].".json";
+            $file_encode = json_encode($data_json,true);
+            file_put_contents($filename, $file_encode );
+            chmod($filename,0777);            
+        }
 
-        $filename = "json/data_detect_".$information_data['deviceId'].".json";
-        $file_encode = json_encode($data_json,true);
-        file_put_contents($filename, $file_encode );
-        chmod($filename,0777);
-        //
-        //
-
-        //
-        //
         $data = [
             "head"=>array("code"=>200,"message"=>"Thank You Pong"),
             "body"=>array("data_input"=>$data_json)
