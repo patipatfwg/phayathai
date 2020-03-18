@@ -114,12 +114,17 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                     }
 
                 } 
-                $DataRoom[$getRoom] = [$device_ordinal=>array(
-                                            // "ordinal"=>$device_ordinal,
+                // $DataRoom[$getRoom] = [$device_ordinal=>array(
+                //                             "deviceId"=>$device_deviceId,
+                //                             "room_title"=>$device_title,
+                //                             "nurse_list"=>$get_nurse_list
+                //                         )];
+                $DataRoom[$getRoom] = array(
+                                            "ordinal"=>$device_ordinal,
                                             "deviceId"=>$device_deviceId,
                                             "room_title"=>$device_title,
                                             "nurse_list"=>$get_nurse_list
-                                        )];
+                                        );
             }
             $RefURL = array("https://www.gujarattourism.com/file-manager/ebrochure/thumbs/testing_e_brochure_3.pdf","http://www3.eng.psu.ac.th/pec/6/pec6/paper/CoE/PEC6OR170.pdf","https://forums.estimote.com/t/use-rssi-measure-the-distance/3665/3");
             $GetDataAPI = [
