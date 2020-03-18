@@ -1,7 +1,7 @@
 <head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
 body { padding-top:20px; }
 .container {
@@ -847,20 +847,18 @@ $(document).ready(function() {
         datatype: 'json',
         success: function(data) {
             var HttpCode = data['head']['code'];
-            alert("Success : " + HttpCode );
+            // alert("Success : " + HttpCode );
             if(HttpCode=200)
             {
                 var room_list = data['body']['room'];
                 //room_list.sort(function(a, b){ a-b});
                 var textroom;
                 var xroom;
-alert(room_list.length);
-/*
-                for (i = 0; i < room_list.lenght; i++) {
-                    text += "The number is " + room_list[xroom]['room_title'] + "<br>";
-                    alert(text);
+                var numRoom_list = room_list.length;
+                for (i = 0; i < numRoom_list; i++) {
+                    console.log(room_list[i]['room_title']);
                 }
-                */
+
 
                 
                              
@@ -869,7 +867,7 @@ alert(room_list.length);
                 for (xroom in room_list) {
                     textroom = room_list[xroom]['room_title'];
                     $(textroom).each(function(){
-                        alet('H');
+                        
                     });
                 }
 
