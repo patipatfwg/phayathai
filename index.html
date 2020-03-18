@@ -851,13 +851,28 @@ $(document).ready(function() {
             if(HttpCode=200)
             {
                 var room_list = data['body']['room'];
-                room_list.sort(function(a, b){ a-b});
-                var textroom = "";
+                //room_list.sort(function(a, b){ a-b});
+                var textroom;
                 var xroom;
-                $.each(result, function(i, field){
-                    $("div").append(field + " ");
-                });
+alert(room_list.length);
 /*
+                for (i = 0; i < room_list.lenght; i++) {
+                    text += "The number is " + room_list[xroom]['room_title'] + "<br>";
+                    alert(text);
+                }
+                */
+
+                
+                             
+
+/*
+                for (xroom in room_list) {
+                    textroom = room_list[xroom]['room_title'];
+                    $(textroom).each(function(){
+                        alet('H');
+                    });
+                }
+
                 for (xroom in room_list) {
                     textroom = room_list[xroom]['room_title'];
 
