@@ -1,14 +1,17 @@
 {
-    "room":[
+    "device":[
         {
+            "ordinal":1,
             "deviceId":"7e49d38c03225ea4",
             "title":"1001 TX3 Mini"
         },        
         {
+            "ordinal":2,
             "deviceId":"8eb9c6c70d3a9477",
             "title":"1002 Note4"
         },
         {
+            "ordinal":3,
             "deviceId":"080373d1c0ffac35",
             "title":"1003 Pong"
         }
