@@ -7,6 +7,7 @@
     .ds-btn li{ list-style:none; float:left; padding:10px; }
     .ds-btn li a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
     .ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
+    .ds-btn4  {border-radius: 12px;}
 </style>
 </head>
 <!------ Include the above in your HEAD tag ---------->
@@ -73,23 +74,34 @@
                         var count_nurse = data_nurse.length;
                         if(count_nurse>0)
                         {
-                            var icon = "<i class='glyphicon glyphicon-user pull-left'></i>";
+                            // var icon = "<i class='glyphicon glyphicon-user pull-left'></i>";
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
+                            var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                         }
                         else
                         {
-                            var icon = "<i class='glyphicon glyphicon-tag pull-left'></i>";
+                            var icon = "<img alt='รูปคนไข้' src='png/bed.png' style='width:60px;height:60px;'></img>";
+                            // var icon = "<i class='glyphicon glyphicon-tag pull-left'></i>";
                             var aclass = "btn btn-lg btn-success";
                             var label = "คนไข้กำลังพักผ่อน";
                         }
-                        console.log(count_nurse);
-                    //   for (j = 0; j < data_nurse; j++)
-                    //   {
                         
-                    //   }
-
-                        abc += "<li> <a class='"+aclass+"' href='#'>"+icon+"<span>"+data_room_title+"<br><small>"+label+"</small></span></a> </li>";
+                        for (j = 0; j < count_nurse; j++)
+                        {
+                            var label2 = data_nurse[j]['mac_address'];
+                            console.log(label2);
+                            if(label2)
+                            {
+                                var label2 = data_nurse[j]['mac_address'];
+                            }
+                            else
+                            {
+                                var label2 = '';
+                            }
+                        }
+                    
+                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+label2+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
     
