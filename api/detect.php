@@ -128,9 +128,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                             // $distance_rating_5m = -56.38;
                             // $distance_rating_1m = -51.45;
 
-                            if( strstr( $title,"iTAG") )
+                            if( strstr( $title,"iTAG") || strstr( $title,"v\u00edvosmart 3") )
                             {
-                                if( $distance>(-70.0) )
+                                if( $distance<(-70.0) )
                                 {
                                     $get_nurse_list[$getNurse] = array(
                                         'mac_address'=>$mac_address,
