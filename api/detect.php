@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             ];
 
         }
-        // echo json_encode($data,JSON_PRETTY_PRINT);
+        echo json_encode($data,JSON_PRETTY_PRINT);
 
         // //Backend
         // if($write_deviceId!='' && count($data_input))
@@ -196,7 +196,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             }
             //
         
-        echo json_encode($GetDataAPI);
+        // echo json_encode($GetDataAPI);
     }
 }
 else if($_SERVER['REQUEST_METHOD']=='GET')
