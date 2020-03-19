@@ -52,7 +52,9 @@
     $(document).ready(function() {
         var abc = [];
         $.ajax({
-            url: 'http://10.32.11.72:7777/phayathai/api/view.php',
+            url: 'api/view.php',
+            // url: 'https://mysososo.000webhostapp.com/phayathai/api/view.php',
+            // url: 'http://10.32.11.72:7777/phayathai/api/view.php',
             type: 'POST',
             datatype: 'json',
             success: function(data) {
