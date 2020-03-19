@@ -52,7 +52,6 @@
 <script language="javascript">
     xhr = new XMLHttpRequest();
     $(document).ready(function() {
-        setTimeout(4000);
         var abc = [];
         // var nurse_label = [];
         $.ajax({
