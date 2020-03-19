@@ -96,6 +96,7 @@
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
+                            var label2 = 'G'
                         }
                         else
                         {
