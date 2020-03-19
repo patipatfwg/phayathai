@@ -842,7 +842,7 @@ fieldset[disabled] .btn-mokka.active {
 xhr = new XMLHttpRequest();
 $(document).ready(function() {
     $.ajax({
-        url: 'http://localhost/phayathaiAPI/api/view.php',
+        url: 'http://10.32.11.72:7777/phayathai/api/view.php',
         type: 'POST',
         datatype: 'json',
         success: function(data) {
