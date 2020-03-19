@@ -118,6 +118,6 @@
         xhr.setRequestHeader('Authorization', 'Phayathai');
     }
     setInterval(function(){
-        window.location.reload(1);
-    }, 30000);
+        window.location.reload();
+    }, 4000);
 </script>
