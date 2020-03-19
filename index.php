@@ -104,7 +104,7 @@
                             // var icon = "<i class='glyphicon glyphicon-tag pull-left'></i>";
                             var aclass = "btn btn-lg btn-success";
                             var label = "คนไข้กำลังพักผ่อน";
-                            var label2 = '';
+                            var label2 = ' ';
                         }                        
                     
                         abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+label2+"</small></span></a> </li>";
