@@ -93,11 +93,11 @@
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
-                            
+                            var nurse_label = [];
                             for (j = 0; j < count_nurse; j++)
                             {
-                                var label2 = data_nurse[j]['mac_address'];
-                                console.log(label2);
+                                var nurse_label = data_nurse[j]['mac_address'];
+                                console.log(nurse_label);
                             }
                         }
                         else
