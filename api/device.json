@@ -15,6 +15,12 @@
             "deviceId":"080373d1c0ffac35",
             "title":"ห้อง Pong"
         }
+        ,
+        {
+            "ordinal":4,
+            "deviceId":"e38cc6780febca2e",
+            "title":"ห้อง J7"
+        }
 
     ]
 }
