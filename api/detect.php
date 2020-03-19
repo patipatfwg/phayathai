@@ -183,11 +183,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 {
                     $DataRoom = [$DataRoom];
                 }
-                $RefURL = array("https://www.gujarattourism.com/file-manager/ebrochure/thumbs/testing_e_brochure_3.pdf","http://www3.eng.psu.ac.th/pec/6/pec6/paper/CoE/PEC6OR170.pdf","https://forums.estimote.com/t/use-rssi-measure-the-distance/3665/3");
+                // $RefURL = array("https://www.gujarattourism.com/file-manager/ebrochure/thumbs/testing_e_brochure_3.pdf","http://www3.eng.psu.ac.th/pec/6/pec6/paper/CoE/PEC6OR170.pdf","https://forums.estimote.com/t/use-rssi-measure-the-distance/3665/3");
                 $GetDataAPI = [
                     "head"=>array("code"=>200,"message"=>"OK"),
-                    "body"=>array("room"=> $DataRoom ),
-                    "footer"=>array("Ref."=>$RefURL)
+                    "body"=>array("room"=> $DataRoom )
+                    // ,"footer"=>array("Ref."=>$RefURL)
                 ]; 
                 $filenameGetDataAPI = "json/GetDataAPI.json";
                 $file_encodeGetDataAPI = json_encode($GetDataAPI,true);
