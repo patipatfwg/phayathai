@@ -816,7 +816,7 @@ fieldset[disabled] .btn-mokka.active {
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12" id="col-room">
-                            <span id='aaa'></span>
+
                           <!-- <a href="#" class="btn btn-grey btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />Add <span class="glyphicon glyphicon-plus green"></span><br />Customer</a>
                           <a href="#" class="btn btn-grey btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />edit <span class="glyphicon glyphicon-edit yellow"></span><br />Customer</a>
                           <a href="#" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />Delete <span class="glyphicon glyphicon-minus red"></span><br />Customer</a>
@@ -841,13 +841,14 @@ fieldset[disabled] .btn-mokka.active {
 <script language="javascript">
 xhr = new XMLHttpRequest();
 $(document).ready(function() {
+    var abc = [];
     $.ajax({
         url: 'http://10.32.11.72:7777/phayathai/api/view.php',
         type: 'POST',
         datatype: 'json',
         success: function(data) {
             var HttpCode = data['head']['code'];
-            // alert("Success : " + HttpCode );
+            // alert("Success : " + data['body']['room'][0] );
             if(HttpCode=200)
             {
                 var room_list = data['body']['room'];
@@ -855,9 +856,18 @@ $(document).ready(function() {
                 var textroom;
                 var xroom;
                 var numRoom_list = room_list.length;
-                for (i = 0; i < numRoom_list; i++) {
-                    console.log(room_list[i]['room_title']);
+                for (i = 0; i < numRoom_list; i++)
+                {
+                  console.log(data['body']['room'][i]);
+                  var data_room = data['body']['room'][i];
+                  var data_room_title = data_room['room_title'];
+                  var data_nurse = data['body']['room'][i]['nurse_list'];
+                  
+                  var count_nurse = data_nurse.lenght;
+                  abc += "<a href='#' class='btn btn-grey btn-lg ml-1 mr-1' ><span class='glyphicon glyphicon-user glyphsize'></span> <br />"+data_room_title+"<br />"+ +"</a>";
+                  
                 }
+                $("#col-room").html(abc);
 
 
                 

@@ -92,8 +92,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         //     chmod($filename,0777); 
         // }
 
-        if($write_deviceId!='' && count($data_input))
-        {
+
             $filename = "json/".$information_data['deviceId'].".json";
             $file_encode = json_encode($data_input,true);
             file_put_contents($filename, $file_encode );
@@ -104,8 +103,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             {
                 $device_json = trim(file_get_contents("device.json"));
                 $device_json = json_decode($device_json, true);
+
                 for($getRoom=0;$getRoom<count($device_json['device']);$getRoom++)
                 {
+                    $get_nurse_list=[];
                     $device_deviceId = $device_json['device'][$getRoom]['deviceId'];
                     $device_title = $device_json['device'][$getRoom]['title'];
                     $device_ordinal = $device_json['device'][$getRoom]['ordinal'];
@@ -116,6 +117,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                         $iTAG_json = trim(file_get_contents($device_deviceId_URL));
                         $iTAG_json = json_decode($iTAG_json, true);
                         $get_nurse_list = [];
+                        
                         for($getNurse=0;$getNurse<count($iTAG_json);$getNurse++)
                         {
                             $mac_address = $iTAG_json[$getNurse]['mac_address'];
@@ -151,15 +153,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                         }
                         //
 
-
-                        $DataRoom[$getRoom] = array(
-                                                    "ordinal"=>$device_ordinal,
-                                                    "deviceId"=>$device_deviceId,
-                                                    "room_title"=>$device_title,
-                                                    "nurse_list"=>$get_nurse_list
-                                                );
-
                     }
+                    if(!isset($get_nurse_list)){ $get_nurse_list=[]; }
+                    $DataRoom[$getRoom] = array(
+                                                "ordinal"=>$device_ordinal,
+                                                "deviceId"=>$device_deviceId,
+                                                "room_title"=>$device_title,
+                                                "nurse_list"=>$get_nurse_list
+                                            );
 
                 }
 
@@ -174,7 +175,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                     );
                 }
                 //
-                
+                if(count($DataRoom)>1)
+                {
+                    $DataRoom = $DataRoom;
+                }
+                else
+                {
+                    $DataRoom = [$DataRoom];
+                }
                 $RefURL = array("https://www.gujarattourism.com/file-manager/ebrochure/thumbs/testing_e_brochure_3.pdf","http://www3.eng.psu.ac.th/pec/6/pec6/paper/CoE/PEC6OR170.pdf","https://forums.estimote.com/t/use-rssi-measure-the-distance/3665/3");
                 $GetDataAPI = [
                     "head"=>array("code"=>200,"message"=>"OK"),
@@ -187,7 +195,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 chmod($filenameGetDataAPI,0777);  
             }
             //
-        }
+        
         echo json_encode($GetDataAPI);
     }
 }
