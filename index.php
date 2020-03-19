@@ -145,7 +145,8 @@
             AddZero(now.getMonth() + 1), 
             now.getFullYear()].join("/"), 
             [AddZero(now.getHours()), 
-            AddZero(now.getMinutes())].join(":"), 
+            AddZero(now.getMinutes()),
+            AddZero(now.getSeconds())].join(":"), 
             now.getHours() >= 12 ? "PM" : "AM"].join(" ");
         document.getElementById("Console").innerHTML = "Now: " + strDateTime;
     };
