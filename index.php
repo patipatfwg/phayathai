@@ -1,4 +1,5 @@
 <head>
+<?php  header("Access-Control-Allow-Origin: *"); ?>
 <meta charset="UTF-8">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -50,6 +51,10 @@
 <script language="javascript">
     xhr = new XMLHttpRequest();
     $(document).ready(function() {
+        setTimeout(function() { 
+            $this.attr('disabled', false);
+            $this.val('Submit');
+        }, 4000);
         var abc = [];
         // var nurse_label = [];
         $.ajax({
