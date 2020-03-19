@@ -48,22 +48,28 @@
             </li> -->
         </ul>
 	</div>
+    <div class="row">
+        <div id="Console"></div>
+    </div>
 </div>
 <script language="javascript">
     xhr = new XMLHttpRequest();
-    $(document).ready(function() {
+    $(document).ready(function() 
+    {
         setTimeout(4000);
         var abc = [];
         // var nurse_label = [];
-        $.ajax({
-            url: 'http://freewillmdc.loginto.me:56870/phayathai/api/view.php',
+        $.ajax(
+        {
             // url: 'https://mysososo.000webhostapp.com/phayathai/api/view.php',
             // url: 'http://10.32.11.72:7777/phayathai/api/view.php',
+            url: 'http://freewillmdc.loginto.me:56870/phayathai/api/view.php',
             type: 'POST',
             datatype: 'json',
-            success: function(data) {
+            success: function(data) 
+            {
                 var HttpCode = data['head']['code'];
-                // alert("Success : " + data['body']['room'][0] );
+                console.log("Success : " + data['body']['room'] );
                 if(HttpCode=200)
                 {
                     var room_list = data['body']['room'];
@@ -108,16 +114,39 @@
                     $("#col-room").hide();  
                 }
             },
-            error: function() { alert('Failed : ' + data['head']['code']); },
+            error: function() 
+            { 
+                alert('Failed : ' + data['head']['code']); 
+            },
             beforeSend: setHeader       
         });   
     });
+
+    //Set Header
     function setHeader(xhr) 
     {
         xhr.withCredentials = true;
         xhr.setRequestHeader('Authorization', 'Phayathai');
     }
+    //Reload
     setInterval(function(){
         window.location.reload();
     }, 4000);
+
+    //Showtime
+    function AddZero(num) 
+    {
+        return (num >= 0 && num < 10) ? "0" + num : num + "";
+    }
+    window.onload = function() 
+    {
+        var now = new Date();
+        var strDateTime = [[AddZero(now.getDate()), 
+            AddZero(now.getMonth() + 1), 
+            now.getFullYear()].join("/"), 
+            [AddZero(now.getHours()), 
+            AddZero(now.getMinutes())].join(":"), 
+            now.getHours() >= 12 ? "PM" : "AM"].join(" ");
+        document.getElementById("Console").innerHTML = "Now: " + strDateTime;
+    };
 </script>
