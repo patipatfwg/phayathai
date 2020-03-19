@@ -1,5 +1,4 @@
 <head>
-<?php  header("Access-Control-Allow-Origin: *"); ?>
 <meta charset="UTF-8">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -77,21 +76,6 @@
                         var data_room_title = data_room['room_title'];
                         var data_nurse = data['body']['room'][i]['nurse_list'];
                         var count_nurse = data_nurse.length;
-                        
-                        // for (j = 0; j < count_nurse; j++)
-                        // {
-                        //     var label2 = data_nurse[j]['mac_address'];
-                        //     console.log(label2);
-                        //     if( typeof(abel2)!="undefined" )
-                        //     {
-                        //         var label2 = data_nurse[j]['mac_address'].'<br>';
-                        //     }
-                        //     else
-                        //     {
-                        //         var label2 = '';
-                        //     }
-                            
-                        // }
 
                         var nurse_label = [];
                         if(count_nurse>0)
@@ -119,7 +103,6 @@
                         abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+nurse_label+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
-                    
                 }
                 else
                 {
@@ -129,10 +112,11 @@
             error: function() { alert('Failed : ' + data['head']['code']); },
             beforeSend: setHeader       
         });   
-        });
-        function setHeader(xhr) {
+    });
+    function setHeader(xhr) 
+    {
+        xhr.withCredentials = true;
         xhr.setRequestHeader('Authorization', 'Phayathai');
-    
     }
     
     </script>
