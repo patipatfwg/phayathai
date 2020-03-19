@@ -15,8 +15,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if($headers_Authorization=='Phayathai')
     {
 
-        $GetDataAPI = trim(file_get_contents("json/GetDataAPI.json"));
+        $filename = "json/GetDataAPI.json";
+        $GetDataAPI = trim(file_get_contents($filename));
         $GetDataAPI = json_decode($GetDataAPI, true);
         echo json_encode($GetDataAPI);
+        //
+        unlink($filename);
+        //
     }
 }

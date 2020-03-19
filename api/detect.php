@@ -130,11 +130,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
                             if( strstr( $title,"iTAG") )
                             {
-                                $get_nurse_list[$getNurse] = array(
-                                    'mac_address'=>$mac_address,
-                                    'distance'=>$distance,
-                                    'title'=>$title,
-                                );
+                                if( $distance>(-70.0) )
+                                {
+                                    $get_nurse_list[$getNurse] = array(
+                                        'mac_address'=>$mac_address,
+                                        'distance'=>$distance,
+                                        'title'=>$title,
+                                    );
+                                }
                             }
 
                                
