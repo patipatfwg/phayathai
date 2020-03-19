@@ -98,16 +98,9 @@
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                             for (j = 0; j < count_nurse; j++)
                             {
-                                var label2 = data_nurse[j]['mac_address'];
+                                var label2 += data_nurse[j]['mac_address'];
                                 console.log(label2);
-                                if( typeof(abel2)!="undefined" )
-                                {
-                                    var label2 += data_nurse[j]['mac_address'].'<br>';
-                                }
-                                else
-                                {
-                                    var label2 = '';
-                                }
+
                                 
                             }
                         }
