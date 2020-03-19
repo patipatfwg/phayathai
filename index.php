@@ -117,5 +117,7 @@
         xhr.withCredentials = true;
         xhr.setRequestHeader('Authorization', 'Phayathai');
     }
-    
-    </script>
+    setInterval(function(){
+        window.location.reload(1);
+    }, 30000);
+</script>
