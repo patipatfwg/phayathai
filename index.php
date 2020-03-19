@@ -97,7 +97,7 @@
                             // var nurse_label = [];
                             for (j = 0; j < count_nurse; j++)
                             {
-                                nurse_label += data_nurse[j]['mac_address'].'<br>';
+                                nurse_label += data_nurse[j]['mac_address'];
                                 console.log(nurse_label);
                             }
                         }
