@@ -74,6 +74,22 @@
                         var data_room_title = data_room['room_title'];
                         var data_nurse = data['body']['room'][i]['nurse_list'];
                         var count_nurse = data_nurse.length;
+                        
+                        for (j = 0; j < count_nurse; j++)
+                        {
+                            var label2 = data_nurse[j]['mac_address'];
+                            console.log(label2);
+                            if( typeof(abel2)!="undefined" )
+                            {
+                                var label2 = data_nurse[j]['mac_address'];
+                            }
+                            else
+                            {
+                                var label2 = '';
+                            }
+                            
+                        }
+
                         if(count_nurse>0)
                         {
                             // var icon = "<i class='glyphicon glyphicon-user pull-left'></i>";
@@ -87,48 +103,12 @@
                             // var icon = "<i class='glyphicon glyphicon-tag pull-left'></i>";
                             var aclass = "btn btn-lg btn-success";
                             var label = "คนไข้กำลังพักผ่อน";
-                        }
-                        
-                        for (j = 0; j < count_nurse; j++)
-                        {
-                            var label2 = data_nurse[j]['mac_address'];
-                            console.log(label2);
-                            if(label2)
-                            {
-                                var label2 = data_nurse[j]['mac_address'];
-                            }
-                            else
-                            {
-                                var label2 = '';
-                            }
-                        }
+                            var label2 = '';
+                        }                        
                     
                         abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+label2+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
-    
-    
-                    
-                                 
-    
-    /*
-                    for (xroom in room_list) {
-                        textroom = room_list[xroom]['room_title'];
-                        $(textroom).each(function(){
-                            
-                        });
-                    }
-    
-                    for (xroom in room_list) {
-                        textroom = room_list[xroom]['room_title'];
-    
-                        
-                            var abc = "<a href='#' class='btn btn-grey btn-lg' role='button'><span class='glyphicon glyphicon-user glyphsize'></span> <br />Add <span class='glyphicon glyphicon-plus green'></span><br />Customer</a>";
-                            $('#aaa').html(abc);
-                      
-    
-                    }
-                    */
                     
                 }
                 else
