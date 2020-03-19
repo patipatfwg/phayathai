@@ -1,7 +1,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>  
 <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>     -->
 <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
@@ -52,6 +52,7 @@
 <script language="javascript">
     xhr = new XMLHttpRequest();
     $(document).ready(function() {
+        setTimeout(4000);
         var abc = [];
         // var nurse_label = [];
         $.ajax({
