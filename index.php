@@ -63,9 +63,6 @@
                 if(HttpCode=200)
                 {
                     var room_list = data['body']['room'];
-                    //room_list.sort(function(a, b){ a-b});
-                    var textroom;
-                    var xroom;
                     var numRoom_list = room_list.length;
                     for (i = 0; i < numRoom_list; i++)
                     {
@@ -98,7 +95,7 @@
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                             for (j = 0; j < count_nurse; j++)
                             {
-                                var label2 += data_nurse[j]['mac_address'];
+                                var label2 = data_nurse[j]['mac_address'];
                                 console.log(label2);
 
                                 
