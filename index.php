@@ -98,7 +98,7 @@
                             
                             for (j = 0; j < count_nurse; j++)
                             {
-                                nurse_label += j+') '+data_nurse[j]['title']+'<br>';
+                                nurse_label += (j+1)+') '+data_nurse[j]['title']+'<br>';
                                 console.log(nurse_label);
                             }
                         }
