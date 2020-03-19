@@ -90,24 +90,23 @@
                         if(count_nurse>0)
                         {
                             // var icon = "<i class='glyphicon glyphicon-user pull-left'></i>";
+                            var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
-                            var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
+                            
                             for (j = 0; j < count_nurse; j++)
                             {
                                 var label2 = data_nurse[j]['mac_address'];
                                 console.log(label2);
-
-                                
                             }
                         }
                         else
                         {
-                            var icon = "<img alt='รูปคนไข้' src='png/bed.png' style='width:60px;height:60px;'></img>";
                             // var icon = "<i class='glyphicon glyphicon-tag pull-left'></i>";
+                            var icon = "<img alt='รูปคนไข้' src='png/bed.png' style='width:60px;height:60px;'></img>";
                             var aclass = "btn btn-lg btn-success";
                             var label = "คนไข้กำลังพักผ่อน";
-                            var label2 = ' ';
+                            var label2 = '<br>';
                         }                        
                     
                         abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+label2+"</small></span></a> </li>";
