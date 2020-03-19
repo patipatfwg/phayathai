@@ -148,6 +148,6 @@
             AddZero(now.getMinutes()),
             AddZero(now.getSeconds())].join(":"), 
             now.getHours() >= 12 ? "PM" : "AM"].join(" ");
-        document.getElementById("Console").innerHTML = "Now: " + strDateTime;
+        document.getElementById("Console").innerHTML = "Time : " + strDateTime;
     };
 </script>
