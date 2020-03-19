@@ -50,10 +50,7 @@
 <script language="javascript">
     xhr = new XMLHttpRequest();
     $(document).ready(function() {
-        setTimeout(function() { 
-            $this.attr('disabled', false);
-            $this.val('Submit');
-        }, 4000);
+        setTimeout(4000);
         var abc = [];
         // var nurse_label = [];
         $.ajax({
@@ -100,7 +97,7 @@
                             var nurse_label = '<br>';
                         }                        
                     
-                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+nurse_label+"</small></span></a> </li>";
+                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small><b>"+label+"</b><br>"+nurse_label+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
                 }
