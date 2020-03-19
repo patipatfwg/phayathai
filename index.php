@@ -75,20 +75,20 @@
                         var data_nurse = data['body']['room'][i]['nurse_list'];
                         var count_nurse = data_nurse.length;
                         
-                        for (j = 0; j < count_nurse; j++)
-                        {
-                            var label2 = data_nurse[j]['mac_address'];
-                            console.log(label2);
-                            if( typeof(abel2)!="undefined" )
-                            {
-                                var label2 = data_nurse[j]['mac_address'];
-                            }
-                            else
-                            {
-                                var label2 = '';
-                            }
+                        // for (j = 0; j < count_nurse; j++)
+                        // {
+                        //     var label2 = data_nurse[j]['mac_address'];
+                        //     console.log(label2);
+                        //     if( typeof(abel2)!="undefined" )
+                        //     {
+                        //         var label2 = data_nurse[j]['mac_address'].'<br>';
+                        //     }
+                        //     else
+                        //     {
+                        //         var label2 = '';
+                        //     }
                             
-                        }
+                        // }
 
                         if(count_nurse>0)
                         {
@@ -96,7 +96,20 @@
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
-                            var label2 = 'G'
+                            for (j = 0; j < count_nurse; j++)
+                            {
+                                var label2 = data_nurse[j]['mac_address'];
+                                console.log(label2);
+                                if( typeof(abel2)!="undefined" )
+                                {
+                                    var label2 = data_nurse[j]['mac_address'].'<br>';
+                                }
+                                else
+                                {
+                                    var label2 = '';
+                                }
+                                
+                            }
                         }
                         else
                         {
