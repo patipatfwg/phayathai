@@ -51,7 +51,7 @@
     xhr = new XMLHttpRequest();
     $(document).ready(function() {
         var abc = [];
-        var nurse_label = [];
+        // var nurse_label = [];
         $.ajax({
             url: 'http://freewillmdc.loginto.me:56870/phayathai/api/view.php',
             // url: 'https://mysososo.000webhostapp.com/phayathai/api/view.php',
@@ -88,13 +88,14 @@
                             
                         // }
 
+                        var nurse_label = [];
                         if(count_nurse>0)
                         {
                             // var icon = "<i class='glyphicon glyphicon-user pull-left'></i>";
                             var icon = "<img alt='Nurse' src='png/nurse.png' style='width:60px;height:60px;'></img>";
                             var aclass = "btn btn-lg btn-warning";
                             var label = "พยาบาลกำลังปฏิบัติงาน";
-                            // var nurse_label = [];
+                            
                             for (j = 0; j < count_nurse; j++)
                             {
                                 nurse_label += data_nurse[j]['mac_address'];
