@@ -33,10 +33,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             if($write_deviceId!='')
             {
                 //Write Log
-                // $filename = "jsonlogs/".$information_data['deviceId']."_data_detect.json";
-                // $file_encode = json_encode($data_json,true);
-                // file_put_contents($filename, $file_encode );
-                // chmod($filename,0777);     
+                $filename = "jsonlogs/".$information_data['deviceId']."_data_detect.json";
+                $file_encode = json_encode($data_json,true);
+                file_put_contents($filename, $file_encode );
+                chmod($filename,0777);     
                  
                 //
                 // for($num=0;$num<count($nurse_data);$num++)
