@@ -102,7 +102,7 @@
                                 console.log(label2);
                                 if( typeof(abel2)!="undefined" )
                                 {
-                                    var label2 = data_nurse[j]['mac_address'].'<br>';
+                                    var label2 =+ data_nurse[j]['mac_address'].'<br>';
                                 }
                                 else
                                 {
