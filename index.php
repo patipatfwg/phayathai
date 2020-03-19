@@ -105,7 +105,7 @@
                             var nurse_label = '<br>';
                         }                        
                     
-                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small><b>"+label+"</b><br>"+nurse_label+"</small></span></a> </li>";
+                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span><b>"+data_room_title+"</b>br><small>"+label+"<br>"+nurse_label+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
                 }
