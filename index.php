@@ -97,7 +97,7 @@
                             // var nurse_label = [];
                             for (j = 0; j < count_nurse; j++)
                             {
-                                nurse_label += data_nurse[j]['mac_address'];
+                                nurse_label += data_nurse[j]['mac_address'].'<br>';
                                 console.log(nurse_label);
                             }
                         }
@@ -107,10 +107,10 @@
                             var icon = "<img alt='รูปคนไข้' src='png/bed.png' style='width:60px;height:60px;'></img>";
                             var aclass = "btn btn-lg btn-success";
                             var label = "คนไข้กำลังพักผ่อน";
-                            var label2 = '<br>';
+                            var nurse_label = '<br>';
                         }                        
                     
-                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+label2+"</small></span></a> </li>";
+                        abc += "<li class='ds-btn4'> <a class='"+aclass+"' href='#'><center>"+icon+"</center><span>"+data_room_title+"<br><small>"+label+"<br>"+nurse_label+"</small></span></a> </li>";
                     }
                     $("#col-room").html(abc);
                     
