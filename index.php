@@ -16,7 +16,7 @@
 
 <div class="container">
 	<div class="row">
-        <h2 class="text-success">Phayathai IPD System</h2>
+        <h2 class="text-success">Phayathai Nurse Tracking</h2>
         <ul class="ds-btn" id="col-room">
         <!-- <li>
                 <a class="btn btn-lg " href="http://dotstrap.com/">
